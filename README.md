@@ -24,7 +24,7 @@ For this application we used the Visual Studio environment using ASP.NET Core MV
 
 ## Documentation
 The file [User Manual.pdf](https://github.com/anastasiamexa/Medical-Center/blob/main/User%20Manual.pdf) contains the user manual and the file
-[Τechnical Μanual](https://github.com/anastasiamexa/Medical-Center/blob/main/%CE%A4echnical%20%CE%9Canual.pdf) contains a detailed description of the 
+[Τechnical Μanual.pdf](https://github.com/anastasiamexa/Medical-Center/blob/main/%CE%A4echnical%20%CE%9Canual.pdf) contains a detailed description of the 
 methods used to create the application. <br />
 Note that everything is in Greek.
 
