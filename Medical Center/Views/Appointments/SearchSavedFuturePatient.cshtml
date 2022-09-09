@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Medical_Center.Models.Appointment>
+
+@{
+    ViewBag.Title = "SearchSavedFuturePatient";
+}
+
+<h2>View Future Appointments</h2>
+
+@using (Html.BeginForm("SearchSavedFuturePatient", "Appointments", FormMethod.Post))
+{
+    TempData["message2"] = Html.Encode(User.Identity.Name); // sending username of user back to AppointmentsController
+    <label for="start">Start date:</label>
+    <input type="date" id="start" name="d"
+           value=@DateTime.Now.Date.ToShortDateString()
+           min="2022-01-01" max="2032-12-31">
+    <input type="submit" value="Search" class="btn btn-primary" />
+}
+<table class="table" style="background-color: #ffffff; border-radius: 15px 15px 15px 15px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startSlotTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endSlotTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doctor.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patient.username)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startSlotTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endSlotTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.username)
+            </td>
+            <td>
+                @Html.ActionLink("Cancel", "Delete", new { id = item.appid })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Back", "Index", "Account")
+</div>

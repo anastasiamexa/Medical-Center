@@ -1,0 +1,56 @@
+﻿@model Medical_Center.Models.Appointment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Appointment</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startSlotTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startSlotTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endSlotTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endSlotTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Doctor.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "Index", "Account")
+</p>

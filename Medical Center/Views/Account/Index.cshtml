@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Request.IsAuthenticated)
+{
+
+    string data = TempData["message"].ToString();
+    if (data == "admin")
+    {
+        <span>Welcome admin @Html.Encode(User.Identity.Name)!</span><br />
+        @Html.ActionLink("Register Patient", "Register", "Account")<br />
+        @Html.ActionLink("Register Doctor", "RegisterDoctors", "Account")
+    }
+    else if (data == "doctor")
+    {
+        <span>Welcome doctor @Html.Encode(User.Identity.Name)!</span><br />
+        TempData["message2"] = Html.Encode(User.Identity.Name); // sending username of user back to AppointmentsController
+        @Html.ActionLink("Add Appointment", "Create", "Appointments")<br />
+        @Html.ActionLink("View Appointments", "Index", "Appointments")
+    }
+    else if (data == "patient")
+    {
+        TempData["message2"] = Html.Encode(User.Identity.Name); // sending username of user back to AppointmentsController
+        <span>Welcome patient @Html.Encode(User.Identity.Name)!</span><br />
+        @Html.ActionLink("View Available Appointments", "SearchPatient", "Appointments")<br />
+        @Html.ActionLink("View Saved Appointments", "SearchSavedPatient", "Appointments")<br />
+        @Html.ActionLink("View Future Appointments", "SearchSavedFuturePatient", "Appointments")
+    }
+}
+else
+{
+    @Html.ActionLink("Login Admin", "LoginAdmin", "Account")<br />
+    @Html.ActionLink("Login Doctor", "LoginDoctor", "Account")<br />
+    @Html.ActionLink("Login Patient", "LoginPatient", "Account")<br />
+
+    @Html.ActionLink("Register Patient", "Register", "Account")<br />
+}

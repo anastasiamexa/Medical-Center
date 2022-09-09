@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body background="~/Content/background.png" style="background-repeat: no-repeat; background-attachment: fixed">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Medical Center", "Index", "Account", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="nav navbar-nav flex-grow-1">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Account")</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("LoginAdmin", "Account")"'>Log in</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("Register", "Account")"'>Register Patient</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("RegisterDoctors", "Account")"'>Register Doctors</button>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctor</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("LoginDoctor", "Account")"'>Log in</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("Create", "Appointments")"'>Set Availability</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("Index", "Appointments")"'>View Appointments</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("Index", "Appointments")"'>Delete Appointments</button>
+                            }
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-info" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Patient</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (!Request.IsAuthenticated)
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("LoginPatient", "Account")"'>Log in</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("Register", "Account")"'>Register</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("SearchPatient", "Appointments")"'>Book</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("SearchSavedPatient", "Appointments")"'>History</button><br><br>
+                                <button type="button" class="dropdown-item btn btn-info btn-sm" style="background-color:slategrey; border:none;" onclick='window.location = "@Url.Action("SearchSavedFuturePatient", "Appointments")"'>Cancel</button>
+                            }
+                        </div>
+                    </li>
+                    <li>
+                        @if (Request.IsAuthenticated)
+                        {
+
+                            @Html.ActionLink("Log Out", "Logout", "Account")
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
