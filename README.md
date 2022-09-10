@@ -20,7 +20,7 @@ As part of the course "Current topics of software engineering - Software for mob
 - Registration of doctors and patients in the system.
 
 ## Tech
-For this application we used the Visual Studio environment using ASP.NET Core MVC technology. The database used is Microsoft Sql Server.
+For this application we used the Visual Studio environment using ASP.NET Core MVC technology. The database used is Microsoft SQL Server.
 
 ## Documentation
 The file [User Manual.pdf](https://github.com/anastasiamexa/Medical-Center/blob/main/User%20Manual.pdf) contains the user manual and the file
